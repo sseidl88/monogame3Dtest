@@ -12,10 +12,18 @@ namespace Basic3DStarter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Triangle triangle;
+        Quad quad;
+
+        // The cube to draw 
+        Cube cube;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            
         }
 
         /// <summary>
@@ -41,6 +49,11 @@ namespace Basic3DStarter
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            triangle = new Triangle(this);
+            // Create the quad
+            quad = new Quad(this);
+            // Create the cube
+            cube = new Cube(this);
         }
 
         /// <summary>
@@ -63,6 +76,10 @@ namespace Basic3DStarter
                 Exit();
 
             // TODO: Add your update logic here
+            triangle.Update(gameTime);
+
+            // update the cube 
+            cube.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -76,6 +93,13 @@ namespace Basic3DStarter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            //triangle.Draw();
+            //  quad.Draw();
+
+            // draw the cube
+            cube.Draw();
+
 
             base.Draw(gameTime);
         }
